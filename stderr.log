@@ -1,0 +1,64 @@
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "src/pymssql.pyx", line 450, in pymssql.Cursor.execute
+  File "src/_mssql.pyx", line 1064, in _mssql.MSSQLConnection.execute_query
+  File "src/_mssql.pyx", line 1095, in _mssql.MSSQLConnection.execute_query
+  File "src/_mssql.pyx", line 1228, in _mssql.MSSQLConnection.format_and_run_query
+  File "src/_mssql.pyx", line 1639, in _mssql.check_cancel_and_raise
+  File "src/_mssql.pyx", line 1683, in _mssql.maybe_raise_MSSQLDatabaseException
+_mssql.MSSQLDatabaseException: (289, b'Cannot construct data type date, some of the arguments have values which are not valid.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+  File "src/pymssql.pyx", line 468, in pymssql.Cursor.execute
+pymssql.OperationalError: (289, b'Cannot construct data type date, some of the arguments have values which are not valid.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/load.py", line 219, in load_data_source
+    load_entity(T_B_S, code, month, year, run=True)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/load.py", line 205, in load_entity
+    _full_load(name, code, month, year)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/load.py", line 76, in _full_load
+    _load_hcs_heap(sessions[HCS], name, code, month, year)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/load.py", line 32, in _load_hcs_heap
+    _load_core(session, command, params)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/load.py", line 14, in _load_core
+    session.execute(command, params)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1269, in execute
+    clause, params or {}
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 399, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
+    raise value.with_traceback(tb)
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/fedor/PycharmProjects/stored-procedures-wrapper/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+  File "src/pymssql.pyx", line 468, in pymssql.Cursor.execute
+sqlalchemy.exc.OperationalError: (pymssql.OperationalError) (289, b'Cannot construct data type date, some of the arguments have values which are not valid.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+[SQL: EXECUTE dbo.sp_export_to_bill_ab_turnover_balance_sheet @CurDataAreaId = %(code)s, @period_month = %(month)s, @period_year = %(year)s]
+[parameters: {'code': '0c06', 'month': 77, 'year': 2019}]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+
+123456

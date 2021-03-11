@@ -1,0 +1,5 @@
+Flask
+pymssql
+requests
+sqlalchemy
+waitress

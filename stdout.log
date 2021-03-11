@@ -1,0 +1,39 @@
+Serving on http://0.0.0.0:8080
+15:36:22 - *** call data_source_sync() ***
+
+15:36:22-> - START [0c06, 77, 2019]
+->15:36:25 - check_prep - 2019-07-03 01:39:33.363000
+->15:36:32 - check_crude - 2019-07-03 03:01:14.033000
+->15:36:47 - check_heap - 2019-07-04 00:20:29.700000
+15:36:47-> - EXECUTE dbo.sp_export_to_bill_ab_turnover_balance_sheet @CurDataAreaId = :code, @period_month = :month, @period_year = :year {'code': '0c06', 'month': 77, 'year': 2019}
+Serving on http://0.0.0.0:8080
+15:43:09 - *** call sync_entity() ***
+
+15:43:09-> - START [0c06, 7, 2019]
+->15:43:09 - check_prep - 2019-07-11 23:26:44.050000
+->15:43:10 - check_crude - 2019-07-12 03:03:20.377000
+->15:43:10 - check_heap - 2019-07-12 05:00:59.167000
+15:43:10-> - EXECUTE dbo.sp_export_to_bill_ab_payment @CurDataAreaId = :code, @period_month = :month, @period_year = :year {'code': '0c06', 'month': 7, 'year': 2019}
+15:43:10-> - EXECUTE crude.sp_load_datasource_payment None
+15:43:13 - *** call sync_entity() ***
+
+15:43:18-> - EXECUTE heap.sp_load_to_heap_from_crude_payment None
+->15:43:23 - check_prep - 2019-07-12 15:43:09.943000
+->15:43:23 - check_crude - 2019-07-12 15:43:15.690000
+->15:43:23 - check_heap - 2019-07-12 15:43:18.193000
+->15:43:23 - STOP payment
+
+15:45:32 - *** call sync_entity() ***
+
+15:45:32-> - START [0c06, 7, 2019]
+->15:45:33 - check_prep - 2019-07-12 15:43:09.943000
+->15:45:33 - check_crude - 2019-07-12 15:43:15.690000
+->15:45:33 - check_heap - 2019-07-12 15:43:18.193000
+15:45:33-> - EXECUTE dbo.sp_export_to_bill_ab_payment @CurDataAreaId = :code, @period_month = :month, @period_year = :year {'code': '0c06', 'month': 7, 'year': 2019}
+15:45:34-> - EXECUTE crude.sp_load_datasource_payment None
+15:45:42-> - EXECUTE heap.sp_load_to_heap_from_crude_payment None
+->15:45:44 - check_prep - 2019-07-12 15:43:09.943000
+->15:45:44 - check_crude - 2019-07-12 15:43:15.690000
+->15:45:44 - check_heap - 2019-07-12 15:43:18.193000
+->15:45:44 - STOP payment
+
